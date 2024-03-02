@@ -20,15 +20,19 @@ for i in range(epoch):
  hinp1=np.dot(x,wb) 
  hinp=hinp1+bb 
  hlayer_act=sigmoid(hinp) 
+
  outinp1=np.dot(hlayer_act,wout) 
  outinp=outinp1+bout 
  output=sigmoid(outinp) 
+
  EO=y-output 
  outgrad=derivation_sigmoid(output) 
  d_output=EO*outgrad 
+
  EH=d_output.dot(wout.T) 
  hiddengrad=derivation_sigmoid(hlayer_act) 
  d_hiddenlayer=EH*hiddengrad 
+ 
  wout+=hlayer_act.T.dot(d_output)*lr 
  wb+=x.T.dot(d_output)*lr 
 print("Input:\n" +str(x)) 
